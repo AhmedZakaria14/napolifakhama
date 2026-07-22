@@ -21,13 +21,11 @@
   const menu = document.querySelector('[data-nav-links]');
   const closeMenu = () => {
     menu?.classList.remove('open');
-    document.body.classList.remove('menu-open');
     menuButton?.setAttribute('aria-expanded', 'false');
     if (menuButton) menuButton.textContent = '☰';
   };
   menuButton?.addEventListener('click', () => {
     const open = menu?.classList.toggle('open');
-    document.body.classList.toggle('menu-open', Boolean(open));
     menuButton.setAttribute('aria-expanded', String(Boolean(open)));
     menuButton.textContent = open ? '×' : '☰';
   });
@@ -48,7 +46,7 @@
   const lightboxImage = lightbox?.querySelector('img');
   const closeLightbox = () => {
     lightbox?.classList.remove('open');
-    document.body.classList.remove('menu-open');
+    document.body.classList.remove('modal-open');
   };
   document.querySelectorAll('[data-gallery-image]').forEach(button => {
     button.addEventListener('click', () => {
@@ -57,7 +55,7 @@
       lightboxImage.src = image.src;
       lightboxImage.alt = image.alt;
       lightbox.classList.add('open');
-      document.body.classList.add('menu-open');
+      document.body.classList.add('modal-open');
     });
   });
   lightbox?.querySelector('[data-lightbox-close]')?.addEventListener('click', closeLightbox);
