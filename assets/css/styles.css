@@ -32,7 +32,7 @@ body {
   line-height: 1.75;
   transition: background .25s ease, color .25s ease;
 }
-body.menu-open { overflow: hidden; }
+body.modal-open { overflow: hidden; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; }
@@ -195,9 +195,14 @@ button { cursor: pointer; }
 .reveal.visible { opacity: 1; transform: none; }
 
 @media (max-width: 980px) {
-  .nav-links { display: none; position: fixed; top: 112px; inset-inline: 0; bottom: 0; padding: 28px 22px; background: var(--bg); flex-direction: column; align-items: stretch; gap: 0; }
+  .site-header { background: var(--bg); backdrop-filter: none; }
+  .nav { flex-wrap: wrap; }
+  .nav-links { display: none; position: static; flex: 0 0 100%; width: 100%; max-height: calc(100vh - 120px); overflow-y: auto; padding: 8px 0 16px; background: var(--bg); border-top: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 15px; border-bottom: 1px solid var(--line); }
+  .nav-links a { padding: 13px 15px; border-bottom: 1px solid var(--line); border-radius: 10px; }
+  .nav-links a:last-child { border-bottom: 0; }
+  .nav-links a:hover { background: var(--surface-2); }
+  .nav-links a[aria-current="page"] { color: #fff; background: var(--brand); }
   .nav-links a[aria-current="page"]::after { display: none; }
   .menu-btn { display: grid; }
   .desktop-wa { display: none; }
@@ -219,7 +224,6 @@ button { cursor: pointer; }
   .brand strong { font-size: 15px; }
   .brand small { display: none; }
   .nav { min-height: 70px; }
-  .nav-links { top: 112px; }
   .hero { min-height: 780px; }
   .hero-content { padding: 95px 0 76px; }
   .hero h1 { font-size: 42px; }
