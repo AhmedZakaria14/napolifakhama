@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+  <title id="title">شعار أفران ومشبات الفخامة</title>
+  <desc id="desc">فرن مقوس بشعلة وزخارف طوب بجانب اسم أفران ومشبات الفخامة</desc>
+  <image href="fakhama-emblem-512.png" x="880" y="10" width="320" height="320"/>
+  <g font-family="Cairo,Tahoma,Arial,sans-serif" text-anchor="end">
+    <text x="835" y="145" font-size="70" font-weight="900" fill="#120e0c">أفران ومشبات الفخامة</text>
+    <text x="835" y="220" font-size="34" font-weight="700" fill="#f36b2b">أفران مطاعم • مشبات • شوايات</text>
+    <rect x="180" y="252" width="655" height="8" rx="4" fill="#ff9a3d"/>
+  </g>
+</svg>
