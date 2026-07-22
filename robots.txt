@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ahmedzakaria14.github.io/napolifakhama/sitemap.xml
