@@ -31,6 +31,7 @@ html {
 }
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--text);
   font-family: "Cairo", Tahoma, Arial, sans-serif;
@@ -45,6 +46,7 @@ body.modal-open {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 a {
   color: inherit;
@@ -58,6 +60,17 @@ select {
 }
 button {
   cursor: pointer;
+}
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--brand) 70%, #fff);
+  outline-offset: 3px;
 }
 .container {
   width: min(1180px, calc(100% - 32px));
@@ -168,6 +181,7 @@ button {
   display: flex;
   align-items: center;
   gap: 9px;
+  flex: 0 0 auto;
 }
 .icon-btn {
   width: 43px;
@@ -193,6 +207,8 @@ button {
   border: 0;
   border-radius: 14px;
   font-weight: 900;
+  max-width: 100%;
+  text-align: center;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -339,6 +355,13 @@ button {
 .grid {
   display: grid;
   gap: 24px;
+}
+.grid > *,
+.split > *,
+.contact-grid > *,
+.product-block > *,
+.service-showcase > * {
+  min-width: 0;
 }
 .grid-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -919,6 +942,31 @@ button {
   color: #d6c7be;
   font-size: 19px;
 }
+.breadcrumbs {
+  position: relative;
+  z-index: 3;
+  padding-top: 18px;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  list-style: none;
+}
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-inline-end: 8px;
+  color: var(--brand);
+}
+.breadcrumbs a:hover {
+  color: var(--brand);
+}
 .comparison {
   width: 100%;
   border-collapse: collapse;
@@ -992,6 +1040,13 @@ button {
   position: relative;
   z-index: 2;
 }
+.not-found-page {
+  min-height: 100dvh;
+}
+.not-found-page .container {
+  position: relative;
+  z-index: 2;
+}
 .footer-links {
   padding: 0;
   list-style: none;
@@ -1060,13 +1115,22 @@ button {
   }
   .nav {
     flex-wrap: wrap;
+    gap: 0 14px;
+  }
+  .nav .brand {
+    order: 1;
+  }
+  .nav-actions {
+    order: 2;
   }
   .nav-links {
     display: none;
     position: static;
     flex: 0 0 100%;
     width: 100%;
-    max-height: calc(100vh - 120px);
+    order: 3;
+    max-height: calc(100dvh - 112px);
+    overscroll-behavior: contain;
     overflow-y: auto;
     padding: 8px 0 16px;
     background: var(--bg);
@@ -1142,26 +1206,48 @@ button {
   .topbar .container {
     min-height: 42px;
     font-size: 10px;
+    gap: 8px;
   }
   .topbar span {
-    max-width: 70%;
+    max-width: 64%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .topbar a {
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
   .brand {
+    flex: 1 1 auto;
+    max-width: calc(100% - 92px);
     min-width: 0;
+    gap: 8px;
   }
   .brand-mark {
-    width: 45px;
-    height: 45px;
-    flex-basis: 45px;
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
   }
   .brand strong {
-    font-size: 15px;
+    overflow: hidden;
+    font-size: clamp(12px, 3.8vw, 15px);
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .brand small {
     display: none;
   }
   .nav {
     min-height: 70px;
+    column-gap: 8px;
+  }
+  .nav-actions {
+    gap: 5px;
+  }
+  .icon-btn {
+    width: 39px;
+    height: 39px;
   }
   .hero {
     min-height: 780px;
@@ -1196,7 +1282,7 @@ button {
   }
   .service-visuals {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 310px 180px;
+    grid-template-rows: minmax(240px, 82vw) 160px;
   }
   .service-image-main {
     grid-column: 1 / 3;
@@ -1232,8 +1318,58 @@ button {
   .page-hero {
     min-height: 410px;
   }
+  .page-hero .container {
+    padding: 52px 0;
+  }
+  .page-hero p,
+  .section-head p {
+    font-size: 16px;
+  }
+  .card-pad,
+  .form-card {
+    padding: 22px;
+  }
+  .contact-card {
+    padding: 18px;
+  }
+  .contact-card > span:last-child,
+  .footer-grid,
+  .footer-grid * {
+    min-width: 0;
+  }
+  .contact-card span,
+  .footer-grid a {
+    overflow-wrap: anywhere;
+  }
+  .floating {
+    bottom: max(14px, env(safe-area-inset-bottom));
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+  }
+  .floating-wa {
+    right: 12px;
+  }
+  .floating-call {
+    left: 12px;
+  }
   .comparison {
     min-width: 650px;
+  }
+}
+
+@media (max-width: 340px) {
+  .nav-actions [data-theme-toggle] {
+    display: none;
+  }
+  .brand {
+    max-width: calc(100% - 48px);
+  }
+  .hero h1 {
+    font-size: 36px;
+  }
+  .service-showcase {
+    padding: 17px;
   }
 }
 

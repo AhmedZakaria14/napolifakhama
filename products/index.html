@@ -84,8 +84,8 @@
         </div>
       </div>
       <nav class="nav container" aria-label="التنقل الرئيسي">
-        <a class="brand" href="../"
-          ><span class="brand-mark">♨</span
+        <a class="brand" href="../" aria-label="أفران ومشبات الفخامة - الرئيسية"
+          ><span class="brand-mark" aria-hidden="true">♨</span
           ><span
             ><strong>أفران ومشبات الفخامة</strong
             ><small>أفران ومشبات وشوايات بالرياض</small></span
@@ -99,7 +99,13 @@
           ><a href="../contact/">اتصل بنا</a>
         </div>
         <div class="nav-actions">
-          <button class="icon-btn" data-theme-toggle type="button">☾</button
+          <button
+            class="icon-btn"
+            data-theme-toggle
+            type="button"
+            aria-label="تفعيل الوضع الليلي"
+          >
+            ☾</button
           ><a
             class="btn btn-whatsapp btn-sm desktop-wa"
             href="https://wa.me/966556182491"
@@ -111,6 +117,7 @@
             data-menu-toggle
             type="button"
             aria-expanded="false"
+            aria-label="فتح القائمة"
           >
             ☰
           </button>
@@ -118,12 +125,19 @@
       </nav>
     </header>
     <main id="main">
+      <nav class="breadcrumbs container" aria-label="مسار التنقل">
+        <ol>
+          <li><a href="../">الرئيسية</a></li>
+          <li aria-current="page">منتجاتنا</li>
+        </ol>
+      </nav>
       <section class="page-hero">
         <img
           src="../assets/images/mosaic-commercial-pizza-oven.webp"
           alt="فرن بيتزا تجاري من منتجات الفخامة"
           width="1200"
           height="1600"
+          fetchpriority="high"
         />
         <div class="container reveal visible">
           <span class="eyebrow">منتجاتنا في الرياض</span>
@@ -180,7 +194,11 @@
                 >اطلب عرض سعر لفرن بيتزا</a
               >
             </div>
-            <div class="service-visuals" role="group" aria-label="صور أفران البيتزا">
+            <div
+              class="service-visuals"
+              role="group"
+              aria-label="صور أفران البيتزا"
+            >
               <figure class="service-image service-image-main">
                 <img
                   src="../assets/images/fakhama-pizza-oven-hero.webp"
@@ -244,7 +262,11 @@
                 >اطلب عرض سعر لفرن مطعم</a
               >
             </div>
-            <div class="service-visuals" role="group" aria-label="صور أفران المطاعم">
+            <div
+              class="service-visuals"
+              role="group"
+              aria-label="صور أفران المطاعم"
+            >
               <figure class="service-image service-image-main">
                 <img
                   src="../assets/images/brick-indoor-pizza-oven.webp"
@@ -308,7 +330,11 @@
                 >اطلب عرض سعر لفرن حديقة</a
               >
             </div>
-            <div class="service-visuals" role="group" aria-label="صور أفران الحدائق">
+            <div
+              class="service-visuals"
+              role="group"
+              aria-label="صور أفران الحدائق"
+            >
               <figure class="service-image service-image-main">
                 <img
                   src="../assets/images/garden-brick-oven.webp"
@@ -436,7 +462,11 @@
                 >اطلب عرض سعر لشواية أو مدفأة</a
               >
             </div>
-            <div class="service-visuals" role="group" aria-label="صور الشوايات والمدافئ">
+            <div
+              class="service-visuals"
+              role="group"
+              aria-label="صور الشوايات والمدافئ"
+            >
               <figure class="service-image service-image-main">
                 <img
                   src="../assets/images/brick-indoor-pizza-oven.webp"
@@ -493,9 +523,9 @@
         <div class="footer-grid">
           <div class="footer-about">
             <div class="brand">
-              <span class="brand-mark">♨</span
+              <span class="brand-mark" aria-hidden="true">♨</span
               ><span
-                ><strong style="color: #fff">أفران ومشبات الفخامة</strong
+                ><strong class="footer-brand">أفران ومشبات الفخامة</strong
                 ><small>صناعة وتركيب في الرياض</small></span
               >
             </div>
@@ -513,7 +543,14 @@
             <h2 class="footer-title">تواصل</h2>
             <ul class="footer-links">
               <li><a href="tel:0556182491">0556182491</a></li>
-              <li><a href="https://wa.me/966556182491">واتساب</a></li>
+              <li>
+                <a
+                  href="https://wa.me/966556182491"
+                  target="_blank"
+                  rel="noopener"
+                  >واتساب</a
+                >
+              </li>
               <li>الرياض، السعودية</li>
             </ul>
           </div>
