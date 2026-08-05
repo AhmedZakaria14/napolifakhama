@@ -31,6 +31,20 @@
 
   const menuButton = document.querySelector("[data-menu-toggle]");
   const menu = document.querySelector("[data-nav-links]");
+
+  // Keep the blog reachable from every existing page without duplicating markup.
+  if (menu && !menu.querySelector('a[href*="blog/"]')) {
+    const blogLink = document.createElement("a");
+    const path = window.location.pathname;
+    const isRoot = /\/napolifakhama\/?$/.test(path) || path === "/";
+    blogLink.href = isRoot ? "blog/" : "../blog/";
+    blogLink.textContent = "المدونة";
+    const contactLink = [...menu.querySelectorAll("a")].find((link) =>
+      link.textContent.includes("اتصل"),
+    );
+    menu.insertBefore(blogLink, contactLink || null);
+  }
+
   const closeMenu = () => {
     menu?.classList.remove("open");
     menuButton?.setAttribute("aria-expanded", "false");
