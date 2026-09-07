@@ -1,0 +1,181 @@
+name: Normalize Breadcrumb Schema Sitewide
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalize BreadcrumbList JSON-LD
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re, html
+
+          ROOT = 'https://napoliovenriyadh.com/'
+          LABELS = {
+              'about': 'من نحن',
+              'products': 'منتجاتنا',
+              'why-al-fakhama': 'لماذا الفخامة؟',
+              'manufacturing': 'طريقة التصنيع',
+              'contact': 'اتصل بنا',
+              'blog': 'المدونة',
+          }
+
+          script_re = re.compile(r'<script\s+type=["\']application/ld\+json["\'](?:\s+[^>]*)?>(.*?)</script>', re.I | re.S)
+          canonical_re = re.compile(r'<link\s+[^>]*rel=["\']canonical["\'][^>]*href=["\']([^"\']+)["\'][^>]*>', re.I)
+          title_re = re.compile(r'<title>(.*?)</title>', re.I | re.S)
+
+          def strip_tags(s):
+              s = re.sub(r'<[^>]+>', '', s or '')
+              return html.unescape(re.sub(r'\s+', ' ', s)).strip()
+
+          def extract_breadcrumbs(obj, found):
+              if isinstance(obj, dict):
+                  # Pull nested breadcrumb properties out as standalone schema.
+                  if 'breadcrumb' in obj and isinstance(obj['breadcrumb'], dict) and obj['breadcrumb'].get('@type') == 'BreadcrumbList':
+                      found.append(obj.pop('breadcrumb'))
+                  # Remove BreadcrumbList nodes from @graph and keep them for standalone output.
+                  if isinstance(obj.get('@graph'), list):
+                      new_graph = []
+                      for node in obj['@graph']:
+                          if isinstance(node, dict) and node.get('@type') == 'BreadcrumbList':
+                              found.append(node)
+                          else:
+                              extract_breadcrumbs(node, found)
+                              new_graph.append(node)
+                      obj['@graph'] = new_graph
+                  for k, v in list(obj.items()):
+                      if k != '@graph':
+                          extract_breadcrumbs(v, found)
+              elif isinstance(obj, list):
+                  for v in obj:
+                      extract_breadcrumbs(v, found)
+
+          def generated_breadcrumb(canonical, title):
+              path = canonical.replace(ROOT, '', 1).strip('/')
+              parts = [p for p in path.split('/') if p]
+              items = [
+                  {'@type':'ListItem','position':1,'name':'الرئيسية','item':ROOT}
+              ]
+              if not parts:
+                  return None
+              if parts[0] == 'blog':
+                  items.append({'@type':'ListItem','position':2,'name':'المدونة','item':ROOT+'blog/'})
+                  if len(parts) > 1:
+                      label = title.split('|')[0].strip() if title else parts[-1]
+                      items.append({'@type':'ListItem','position':3,'name':label,'item':canonical})
+              else:
+                  label = LABELS.get(parts[0]) or (title.split('|')[0].strip() if title else parts[-1])
+                  items.append({'@type':'ListItem','position':2,'name':label,'item':canonical})
+              return {'@type':'BreadcrumbList','itemListElement':items}
+
+          changed = []
+          checked = []
+
+          for path in sorted(Path('.').rglob('index.html')):
+              if path.as_posix() == 'index.html':
+                  continue  # Homepage intentionally has no breadcrumb trail.
+              text = path.read_text(encoding='utf-8')
+              cm = canonical_re.search(text)
+              if not cm:
+                  continue
+              canonical = cm.group(1)
+              tm = title_re.search(text)
+              title = strip_tags(tm.group(1)) if tm else ''
+              found = []
+
+              def replace_script(m):
+                  raw = m.group(1).strip()
+                  try:
+                      obj = json.loads(raw)
+                  except Exception:
+                      return m.group(0)
+                  # Standalone BreadcrumbList: remove now, re-add exactly once below.
+                  if isinstance(obj, dict) and obj.get('@type') == 'BreadcrumbList':
+                      found.append(obj)
+                      return ''
+                  extract_breadcrumbs(obj, found)
+                  payload = json.dumps(obj, ensure_ascii=False, separators=(',', ':'))
+                  return '<script type="application/ld+json">' + payload + '</script>'
+
+              new_text = script_re.sub(replace_script, text)
+              crumb = found[0] if found else generated_breadcrumb(canonical, title)
+              if not crumb:
+                  continue
+              crumb['@context'] = 'https://schema.org'
+              crumb['@type'] = 'BreadcrumbList'
+              crumb['@id'] = canonical.rstrip('/') + '/#breadcrumb'
+              # Ensure deterministic positions and canonical page item for final crumb.
+              if isinstance(crumb.get('itemListElement'), list):
+                  for i, item in enumerate(crumb['itemListElement'], start=1):
+                      if isinstance(item, dict):
+                          item['position'] = i
+              crumb_json = json.dumps(crumb, ensure_ascii=False, separators=(',', ':'))
+              marker = '<script type="application/ld+json" id="breadcrumb-schema">' + crumb_json + '</script>'
+              new_text = re.sub(r'</head>', marker + '</head>', new_text, count=1, flags=re.I)
+
+              # Remove accidental blank runs left by stripped schema blocks.
+              new_text = re.sub(r'\n{3,}', '\n\n', new_text)
+              checked.append(path.as_posix())
+              if new_text != text:
+                  path.write_text(new_text, encoding='utf-8')
+                  changed.append(path.as_posix())
+
+          print('Checked:', len(checked))
+          print('Changed:', len(changed))
+          for p in changed:
+              print(' -', p)
+          PY
+
+      - name: Verify all internal pages have one standalone BreadcrumbList
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, json, sys
+          failures=[]
+          for p in sorted(Path('.').rglob('index.html')):
+              if p.as_posix() == 'index.html':
+                  continue
+              t=p.read_text(encoding='utf-8')
+              if 'rel="canonical"' not in t and "rel='canonical'" not in t:
+                  continue
+              matches=re.findall(r'<script\s+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',t,re.I|re.S)
+              standalone=0
+              for raw in matches:
+                  try: obj=json.loads(raw.strip())
+                  except: continue
+                  if isinstance(obj,dict) and obj.get('@type')=='BreadcrumbList':
+                      standalone+=1
+              if standalone != 1:
+                  failures.append((p.as_posix(),standalone))
+          if failures:
+              print('Breadcrumb verification failures:',failures)
+              sys.exit(1)
+          print('All internal canonical pages have exactly one standalone BreadcrumbList.')
+          PY
+
+      - name: Commit normalized breadcrumbs
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.html'
+          if git diff --cached --quiet; then
+            echo "No breadcrumb changes required"
+          else
+            git commit -m "Normalize BreadcrumbList schema across internal pages"
+            git push origin HEAD:main
+          fi
