@@ -148,5 +148,155 @@
     "category": "الشوايات والتجهيزات",
     "date": "2026-08-05",
     "image": "black-white-restaurant-oven.webp"
+  },
+  {
+    "doc_id": "1CpwdXBDDpxizRq606MOEkFbZUnNKb6HNbFLyWrnbB0w",
+    "slug": "napoli-bread-oven",
+    "title": "فرن خبز نابولي",
+    "keyword": "فرن خبز نابولي",
+    "related_keywords": ["فرن بيتزا نابولي", "فرن بيتزا نابولي غاز", "فرن نابولي صغير"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "brick-indoor-pizza-oven.webp"
+  },
+  {
+    "doc_id": "1S9TNJCekdlV0Yx9Exn1rFe1ghlr52VdLj4HAdZFOyWI",
+    "slug": "electric-oven-restaurants",
+    "title": "فرن كهربائي للمطاعم",
+    "keyword": "فرن كهربائي للمطاعم",
+    "related_keywords": ["فرن كهربائي كبير للمطاعم", "فرن كهربائي صغير", "فرن بيتزا"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "custom-brick-oven.webp"
+  },
+  {
+    "doc_id": "1P888PZBI_am8bavwdSdWWoJHQ5GqKqpmRYRYekv-pMM",
+    "slug": "napoli-pizza-gas-oven",
+    "title": "فرن بيتزا نابولي غاز",
+    "keyword": "فرن بيتزا نابولي غاز",
+    "related_keywords": ["فرن بيتزا غاز", "فرن بيتزا صغير غاز"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "black-white-restaurant-oven.webp"
+  },
+  {
+    "doc_id": "1Uxiyt1ZJAnPpynfGueUHYeMXo1g9yJLoZmqrWXs6E4I",
+    "slug": "napoli-oven-factory",
+    "title": "مصنع افران نابولي",
+    "keyword": "مصنع افران نابولي",
+    "related_keywords": ["افران نابولي الرياض", "فرن نابولي صغير", "فرن بيتزا نابولي حطب"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "mosaic-commercial-pizza-oven.webp"
+  },
+  {
+    "doc_id": "1ThYhWqAj_y2U1uNpwsCHb-et1JzZ5YAtc7MdCHKsRFI",
+    "slug": "napoli-pizza-ovens",
+    "title": "افران بيتزا نابولي",
+    "keyword": "افران بيتزا نابولي",
+    "related_keywords": ["فرن بيتزا نابولي غاز", "فرن بيتزا غاز", "فرن بيتزا حطب", "افران نابولي الرياض"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "fakhama-pizza-oven-hero.webp"
+  },
+  {
+    "doc_id": "1r_svSiz5utaI94EKQUdiWTIUUV6W2A6JftEyYbcm_Wk",
+    "slug": "small-napoli-oven",
+    "title": "فرن نابولي صغير",
+    "keyword": "فرن نابولي صغير",
+    "related_keywords": ["فرن بيتزا نابولي", "فرن بيتزا نابولي غاز"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "villa-brick-oven.webp"
+  },
+  {
+    "doc_id": "1syoC4WkHNZC43VX45RYuRoRgWI8wAdnPjp8UO8FjMn0",
+    "slug": "electric-pizza-oven-restaurants",
+    "title": "فرن البيتزا الكهربائي للمطاعم",
+    "keyword": "فرن البيتزا الكهربائي للمطاعم",
+    "related_keywords": ["فرن بيتزا كهربائي"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "brick-indoor-pizza-oven.webp"
+  },
+  {
+    "doc_id": "10VRBJHLsIeLHnP-r9wDLGlYbTX0E9WHNl2aMltyq4R8",
+    "slug": "italian-pizza-oven",
+    "title": "فرن بيتزا إيطالي",
+    "keyword": "فرن بيتزا إيطالي",
+    "related_keywords": ["بيتزا الفرن الايطالي", "فرن بيتزا ايطالي حطب", "فرن بيتزا ايطالي كهربائي"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "fakhama-pizza-oven-hero.webp"
+  },
+  {
+    "doc_id": "1zEtROUadyVIH_KIQ4gFAfiWznvJ734pokwAQIZX_pIs",
+    "slug": "wood-fired-pizza-oven",
+    "title": "فرن بيتزا حطب",
+    "keyword": "فرن بيتزا حطب",
+    "related_keywords": [],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "outdoor-brick-oven.webp"
+  },
+  {
+    "doc_id": "1b7E1tlDyLsALDJ7XIh0qmH-MqeeYEOmLWJwR-54YOPQ",
+    "slug": "gas-pizza-oven",
+    "title": "فرن بيتزا غاز",
+    "keyword": "فرن بيتزا غاز",
+    "related_keywords": ["فرن بيتزا غاز صغير", "فرن بيتزا نابولي"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "black-white-restaurant-oven.webp"
+  },
+  {
+    "doc_id": "1Io2lBMLamkLEteSZSfxclFr2yAp4mpiqAmeRjYGCY1c",
+    "slug": "oven-shop-riyadh",
+    "title": "محل افران بالرياض",
+    "keyword": "محل افران بالرياض",
+    "related_keywords": ["أفران الحطب الرياض", "أفران غاز مخفضة الرياض", "عروض فرن غاز", "فرن كهربائي الرياض"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "mosaic-commercial-pizza-oven.webp"
+  },
+  {
+    "doc_id": "1PM_HIaQpYc0iR1HR6ancGz-wlevNo6U0jCgh1Gzd990",
+    "slug": "mobile-napoli-ovens",
+    "title": "افران نابولي متحركة",
+    "keyword": "افران نابولي متحركة",
+    "related_keywords": [],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "outdoor-brick-oven.webp"
+  },
+  {
+    "doc_id": "1JYCz_PUnwvIYPqFqd2MlIqRFgRdx9P8nN3wpMumkIMY",
+    "slug": "stone-oven-restaurants",
+    "title": "فرن حجر للمطاعم",
+    "keyword": "فرن حجر للمطاعم",
+    "related_keywords": [],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "garden-brick-oven.webp"
+  },
+  {
+    "doc_id": "1W0i336Od7XsKGdvut54ZmLI7rAPxV7-ECeljBy47P7o",
+    "slug": "gas-restaurant-oven",
+    "title": "فرن مطاعم غاز",
+    "keyword": "فرن مطاعم غاز",
+    "related_keywords": ["فرن بيتزا غاز"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "custom-brick-oven.webp"
+  },
+  {
+    "doc_id": "1zL01Ri5WjU0Bhe-GcIAruH5zk3YnoVfbfOILfzkJElk",
+    "slug": "wood-fired-oven-factory",
+    "title": "مصنع افران الحطب",
+    "keyword": "مصنع افران الحطب",
+    "related_keywords": ["عروض أفران الحطب", "أفران الحطب قريب من موقعي", "منتجات أفران الحطب", "أسعار أفران الحطب"],
+    "category": "أفران نابولي والمطاعم",
+    "date": "2026-09-19",
+    "image": "traditional-brick-fireplace.webp"
   }
 ]
