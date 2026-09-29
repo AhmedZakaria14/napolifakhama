@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE_URL = "https://napoliovenriyadh.com"
+SITE_URL = "https://www.napoliovenriyadh.com"
 SITE_NAME = "أفران ومشبات الفخامة"
 PHONE = "0556182491"
 WHATSAPP = "966556182491"
