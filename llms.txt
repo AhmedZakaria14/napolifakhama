@@ -19,14 +19,14 @@
 
 ## الصفحات الرئيسية
 
-- [الرئيسية](https://napoliovenriyadh.com/)
-- [المنتجات](https://napoliovenriyadh.com/products/)
-- [لماذا الفخامة؟](https://napoliovenriyadh.com/why-al-fakhama/)
-- [من نحن](https://napoliovenriyadh.com/about/)
-- [طريقة التصنيع](https://napoliovenriyadh.com/manufacturing/)
-- [آراء العملاء](https://napoliovenriyadh.com/testimonials/)
-- [اتصل بنا](https://napoliovenriyadh.com/contact/)
-- [المدونة](https://napoliovenriyadh.com/blog/)
+- [الرئيسية](https://www.napoliovenriyadh.com/)
+- [المنتجات](https://www.napoliovenriyadh.com/products/)
+- [لماذا الفخامة؟](https://www.napoliovenriyadh.com/why-al-fakhama/)
+- [من نحن](https://www.napoliovenriyadh.com/about/)
+- [طريقة التصنيع](https://www.napoliovenriyadh.com/manufacturing/)
+- [آراء العملاء](https://www.napoliovenriyadh.com/testimonials/)
+- [اتصل بنا](https://www.napoliovenriyadh.com/contact/)
+- [المدونة](https://www.napoliovenriyadh.com/blog/)
 
 ## معلومات التواصل
 
